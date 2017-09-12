@@ -9,11 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0278f6b171676d8469ff7bce875fae1e, type: 3}
-  m_Name: Sword of Destiny
+  m_Name: Default Feet
   m_EditorClassIdentifier: 
-  name: Sword of Destiny
+  name: Default Feet
   icon: {fileID: 0}
-  isDefaultItem: 0
-  equipSlot: 3
-  armorModifer: 0
-  damageModifier: 3
+  isDefaultItem: 1
+  equipSlot: 5
+  mesh: {fileID: 137605174431667634, guid: 604cf8ecad2d5b84db17242fa00b6aa0, type: 2}
+  coveredMeshRegions: 
+  armorModifier: 0
+  damageModifier: 0
