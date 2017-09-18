@@ -6,7 +6,7 @@ public class Pathfinding : MonoBehaviour
 {
 
     //public Transform seeker, target;
-    public UnitList[] units;
+    //public UnitList[] units;
     public Transform seeker, target;
     Grid grid;
     Vector3 cachedSeekerPos, cachedTargetPos;
