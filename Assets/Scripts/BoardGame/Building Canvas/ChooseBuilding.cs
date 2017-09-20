@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")] //How to create new items, you can now create in project "create => Inventory => Item"
-public class Item : ScriptableObject
+
+[CreateAssetMenu(fileName = "New Build", menuName = "Inventory/Build")] //How to create new items, you can now create in project "create => Inventory => Item"
+public class ChooseBuilding : ScriptableObject
 {
 
     new public string name = "New Item";
@@ -21,7 +22,7 @@ public class Item : ScriptableObject
 
     public void RemoveFromInventory()
     {
-        Inventory.instance.Remove(this);
+        Build.instance.Remove(this);
     }
 
 }

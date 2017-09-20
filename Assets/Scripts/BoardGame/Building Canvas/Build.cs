@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Build : MonoBehaviour
 {
 
-    //Could use FindObjectOfType<Inventory>().Add, but it is taxing,
-    //Instead i will use Singleton
-
     #region Singleton only one instance of class/object
-    public static Inventory instance; //Singleton, makes a static variable that share all instances of a class
+    public static Build instance; //Singleton, makes a static variable that share all instances of a class
 
     void Awake()
     {
@@ -28,8 +25,8 @@ public class Inventory : MonoBehaviour
 
     public OnItemChanged onItemChangedCallback;
 
-    public List<Item> items = new List<Item>();
-    public bool Add(Item item)
+    public List<ChooseBuilding> items = new List<ChooseBuilding>();
+    public bool Add(ChooseBuilding item)
     {
         if (!item.isDefaultItem)
         {
@@ -46,7 +43,7 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public void Remove(Item item)
+    public void Remove(ChooseBuilding item)
     {
         items.Remove(item);
 

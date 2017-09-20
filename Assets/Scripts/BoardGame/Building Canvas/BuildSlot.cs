@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
+public class BuildSlot : MonoBehaviour
 {
-
 
     public Image icon;
     public Button removeButton;
 
-    Item item;
-    public void AddItem(Item newItem)
+    ChooseBuilding item;
+    public void AddItem(ChooseBuilding newItem)
     {
         item = newItem;
 
@@ -28,7 +29,7 @@ public class InventorySlot : MonoBehaviour
     }
     public void OnRemoveButton()
     {
-        Inventory.instance.Remove(item);
+        Build.instance.Remove(item);
     }
     public void UseItem()
     {

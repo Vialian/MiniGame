@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConvertToRegularMesh : MonoBehaviour {
+public class ConvertToRegularMesh : MonoBehaviour
+{
 
 
     [ContextMenu("Convert to regular mesh")]

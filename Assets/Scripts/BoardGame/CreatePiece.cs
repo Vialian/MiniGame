@@ -24,14 +24,14 @@ public class CreatePiece : MonoBehaviour {
 
         //}
 
-        for (int i = 0; i < unitList.Length; i++) // Henter objecter fra en liste (drag in i Unity)
-        {
-            transform.localScale += new Vector3(1F, 1, 1);
-            if (GUILayout.Button(unitList[i].tex) && unitList[i].tex != null);
+        //for (int i = 0; i < unitList.Length; i++) // Henter objecter fra en liste (drag in i Unity)
+        //{
+        //    transform.localScale += new Vector3(1F, 1, 1);
+        //    if (GUILayout.Button(unitList[i].tex) && unitList[i].tex != null);
 
 
-            //else GUILayout.Button(unitList[i].name);
-        }
+        //    //else GUILayout.Button(unitList[i].name);
+        //}
     }
 
 }
