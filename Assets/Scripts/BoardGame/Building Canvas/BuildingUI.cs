@@ -20,7 +20,7 @@ public class BuildingUI : MonoBehaviour
     void Start()
     {
         build = Build.instance;
-        build.onItemChangedCallback += UpdateUI;    // Subscribe to the onItemChanged callback
+        //build.onItemChangedCallback += UpdateUI;    // Subscribe to the onItemChanged callback
 
         // Populate our slots array
         slots = itemsParent.GetComponentsInChildren<BuildSlot>();
