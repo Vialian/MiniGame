@@ -11,7 +11,6 @@ public class ChooseBuilding : ScriptableObject
     public Sprite icon = null;
     public bool IsEnaled = false;
     public GameObject Building;
-
     public virtual void Use()
     {
         //Use item
@@ -19,9 +18,13 @@ public class ChooseBuilding : ScriptableObject
         if (name != null && IsEnaled)
         {
             Debug.Log("using " + name);
-            if (Resources.Load("Buildings/" + name, typeof(GameObject)) as GameObject == null) Debug.Log("No Assets for this gameobject");
+            //if (Resources.Load("Buildings/" + name, typeof(GameObject)) as GameObject == null) Debug.Log("No Assets for this gameobject");
 
-            else if (Instantiate(Resources.Load("Buildings/" + name, typeof(GameObject))) as GameObject != null) ;
+
+            if ("Buildings/" + name == null) Debug.Log("No Assets for this gameobject");
+            else if ("Buildings/" + name != null) Instantiate(Building);
+
+
 
             //GameObject instance = Instantiate(Resources.Load("Buildings/" + name, typeof(GameObject))) as GameObject; //Skal ligge i Resources mappe
         }
