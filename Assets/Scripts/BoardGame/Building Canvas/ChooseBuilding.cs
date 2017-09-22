@@ -9,20 +9,32 @@ public class ChooseBuilding : ScriptableObject
 
     new public string name = "New Item";
     public Sprite icon = null;
-    public bool isDefaultItem = false;
+    public bool IsEnaled = false;
+    public GameObject Building;
 
     public virtual void Use()
     {
         //Use item
         //Something might happen
+        if (name != null && IsEnaled)
+        {
+            Debug.Log("using " + name);
+            if (Resources.Load("Buildings/" + name, typeof(GameObject)) as GameObject == null) Debug.Log("No Assets for this gameobject");
 
-        Debug.Log("using " + name);
+            else if (Instantiate(Resources.Load("Buildings/" + name, typeof(GameObject))) as GameObject != null) ;
+
+            //GameObject instance = Instantiate(Resources.Load("Buildings/" + name, typeof(GameObject))) as GameObject; //Skal ligge i Resources mappe
+        }
+        else
+        {
+            Debug.Log("Nothing");
+        }
 
     }
 
-    public void RemoveFromInventory()
-    {
-        Build.instance.Remove(this);
-    }
+    //public void RemoveFromInventory()
+    //{
+    //    Build.instance.Remove(this);
+    //}
 
 }
