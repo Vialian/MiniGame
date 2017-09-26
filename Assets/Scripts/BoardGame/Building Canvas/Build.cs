@@ -59,7 +59,7 @@ public class Build : MonoBehaviour
         RaycastHit hit;
         Vector3 pos = new Vector3(0, 0, 0);
         //Debug.Log(hit.point);
-        Instantiate(Building, pos, Quaternion.identity);
+        //Instantiate(Building, pos, Quaternion.identity);
         //Instantiate(Building, pos, Quaternion.identity).transform.position = Input.mousePosition;
 
 

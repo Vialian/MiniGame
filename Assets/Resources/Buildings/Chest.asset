@@ -14,5 +14,5 @@ MonoBehaviour:
   name: Chest
   icon: {fileID: 21300000, guid: e7be2418a1962c34eb73aaf3cf5b8a29, type: 3}
   IsEnaled: 1
-  Building: {fileID: 1359390132011644, guid: 882879d5b1ca7da40b8835550bd2ab54, type: 2}
-  PlacementStarted: 1
+  Building: {fileID: 1000774799833810, guid: 180769b4c9b774547be629db31ae80a0, type: 2}
+  test: {fileID: 0}

@@ -995,6 +995,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: b373f8bb7f729964395dfa1970857b45,
         type: 2}
+    - target: {fileID: 114157496640852526, guid: c030a1fc7f2b3ee4a995e6ae29d14c8a,
+        type: 2}
+      propertyPath: btn
+      value: t
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c030a1fc7f2b3ee4a995e6ae29d14c8a, type: 2}
   m_IsPrefabParent: 0

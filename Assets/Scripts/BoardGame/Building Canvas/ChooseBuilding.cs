@@ -10,12 +10,11 @@ public class ChooseBuilding : ScriptableObject
     new public string name = "New Item";
     public Sprite icon = null;
     public bool IsEnaled = false;
+    public GameObject BuildingPlacementObject;
     public GameObject Building;
 
     [HideInInspector]
-    public bool place = false;
-
-
+    public BuildSlot test;
     public virtual void Use()
     {
 
@@ -30,13 +29,12 @@ public class ChooseBuilding : ScriptableObject
             if ("Buildings/" + name == null) Debug.Log("No Assets for this gameobject");
             else if ("Buildings/" + name != null)
             {
-                place = true;
 
                 //Instantiate(Resources.Load(NameOfBuilding), objectPos, Quaternion.identity);
                 //Instantiate(Resources.Load("Buildings/Cube"), objectPos, Quaternion.identity);
-                BuildSlot buildslot = new BuildSlot();
-                buildslot.ItemSelection(Building);
-                Build build = new Build();
+               // BuildSlot buildslot = new BuildSlot();
+                test.ItemSelection(Building, BuildingPlacementObject);
+                //Build build = new Build();
                 //build.Placement(true, Building);
             }
 
