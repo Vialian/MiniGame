@@ -14,4 +14,8 @@ MonoBehaviour:
   name: Test
   icon: {fileID: 21300000, guid: 7fe66e443be5f56429931912cb5cabdf, type: 3}
   IsEnaled: 1
+  BuildingDummy: {fileID: 1058427538518172, guid: 3a2058e67ccdd064f8b164db06d469c9,
+    type: 2}
   Building: {fileID: 1359390132011644, guid: 882879d5b1ca7da40b8835550bd2ab54, type: 2}
+  Cost: 5
+  buildSlot: {fileID: 0}

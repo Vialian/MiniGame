@@ -37,11 +37,11 @@ public class Build : MonoBehaviour
         //}
     }
     
-    public void Placement(bool placementStarted, GameObject Building)
-    {
-        InitiatedPlacement = placementStarted;
-        InitiateBuilding = Building;
-        Debug.Log(placementStarted);
+    //public void Placement(bool placementStarted, GameObject Building)
+    //{
+    //    InitiatedPlacement = placementStarted;
+    //    InitiateBuilding = Building;
+    //    Debug.Log(placementStarted);
 
         #region Placement for Buildings
         //var mousePos = Input.mousePosition;
@@ -56,8 +56,8 @@ public class Build : MonoBehaviour
         //currentBuilding.position = new Vector3(p.x, 0.5f, p.z);
 
         //Instantiate(Building, currentBuilding.position, Quaternion.identity);
-        RaycastHit hit;
-        Vector3 pos = new Vector3(0, 0, 0);
+        //RaycastHit hit;
+        //Vector3 pos = new Vector3(0, 0, 0);
         //Debug.Log(hit.point);
         //Instantiate(Building, pos, Quaternion.identity);
         //Instantiate(Building, pos, Quaternion.identity).transform.position = Input.mousePosition;
@@ -78,11 +78,11 @@ public class Build : MonoBehaviour
 
 
 
-        if (placementStarted)
-        {
+        //if (placementStarted)
+        //{
 
-            if (Input.GetMouseButtonDown(0))
-            {
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
 
 
                 //Instantiate(Building, currentBuilding.position, Quaternion.identity);
@@ -94,8 +94,8 @@ public class Build : MonoBehaviour
                 //Debug.Log("Instantiate " + Building.name);
 
 
-            }
-        }
+        //    }
+        //}
             
 
 
@@ -172,4 +172,4 @@ public class Build : MonoBehaviour
     //    if (onItemChangedCallback != null)
     //        onItemChangedCallback.Invoke();
     //}
-}
+//}

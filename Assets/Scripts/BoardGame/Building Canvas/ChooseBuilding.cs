@@ -2,45 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//Creates new menu, where you can make own "prefabs", called build
 [CreateAssetMenu(fileName = "New Build", menuName = "Inventory/Build")] //How to create new items, you can now create in project "create => Inventory => Item"
 public class ChooseBuilding : ScriptableObject
 {
-
+    //The items created build will have variables of public
     new public string name = "New Item";
     public Sprite icon = null;
     public bool IsEnaled = false;
-    public GameObject BuildingPlacementObject;
+    public GameObject BuildingDummy;
     public GameObject Building;
+    public int Cost;
 
     [HideInInspector]
-    public BuildSlot test;
+    public BuildSlot buildSlot;
     public virtual void Use()
     {
-
-        //Use item
-        //Something might happen
+        //If "Build" have a name and is enabled(bool), Use item
         if (name != null && IsEnaled)
         {
             Debug.Log("using " + name);
-            //if (Resources.Load("Buildings/" + name, typeof(GameObject)) as GameObject == null) Debug.Log("No Assets for this gameobject");
 
 
             if ("Buildings/" + name == null) Debug.Log("No Assets for this gameobject");
             else if ("Buildings/" + name != null)
             {
+                //sending to script BuildSlot, with 2 GameObject set on "Build", 
+                //Building for the one in game, BuildingDummy for a temporary transparent GameObject to see where Building will be instantiate
+                buildSlot.ItemSelection(Building, BuildingDummy);
 
-                //Instantiate(Resources.Load(NameOfBuilding), objectPos, Quaternion.identity);
-                //Instantiate(Resources.Load("Buildings/Cube"), objectPos, Quaternion.identity);
-               // BuildSlot buildslot = new BuildSlot();
-                test.ItemSelection(Building, BuildingPlacementObject);
-                //Build build = new Build();
-                //build.Placement(true, Building);
             }
-
-
-
-            //GameObject instance = Instantiate(Resources.Load("Buildings/" + name, typeof(GameObject))) as GameObject; //Skal ligge i Resources mappe
         }
         else
         {
@@ -48,11 +39,4 @@ public class ChooseBuilding : ScriptableObject
         }
 
     }
-    
-
-    //public void RemoveFromInventory()
-    //{
-    //    Build.instance.Remove(this);
-    //}
-
 }

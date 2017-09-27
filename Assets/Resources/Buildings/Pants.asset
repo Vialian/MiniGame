@@ -14,5 +14,8 @@ MonoBehaviour:
   name: Pants
   icon: {fileID: 21300000, guid: 23b4c5641709add4981b1fc5e7eaaa70, type: 3}
   IsEnaled: 1
+  BuildingDummy: {fileID: 1058427538518172, guid: 3a2058e67ccdd064f8b164db06d469c9,
+    type: 2}
   Building: {fileID: 1359390132011644, guid: 882879d5b1ca7da40b8835550bd2ab54, type: 2}
-  PlacementStarted: 0
+  Cost: 10
+  buildSlot: {fileID: 0}
