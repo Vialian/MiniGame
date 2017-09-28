@@ -11,7 +11,10 @@ public class ChooseBuilding : ScriptableObject
     public Sprite icon = null;
     public bool IsEnaled = false;
     public GameObject BuildingDummy;
+    public GameObject BuildingTimer;
     public GameObject Building;
+    public int AnimationTime;
+
     public int Cost;
 
     [HideInInspector]
@@ -29,7 +32,7 @@ public class ChooseBuilding : ScriptableObject
             {
                 //sending to script BuildSlot, with 2 GameObject set on "Build", 
                 //Building for the one in game, BuildingDummy for a temporary transparent GameObject to see where Building will be instantiate
-                buildSlot.ItemSelection(Building, BuildingDummy);
+                buildSlot.ItemSelection(Building,BuildingTimer, BuildingDummy);
 
             }
         }

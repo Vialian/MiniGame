@@ -5,17 +5,26 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 public class BuildSlot : MonoBehaviour
 {
-    //public Image icon;
-    ////public Button removeButton;
+#region Variables
+    //OnHover
     Transform Cost;
+    //Sprite/image for building inventory
     Transform childImage;
+    //reference to ChoosBuildidng
     public ChooseBuilding item;
+    //from ChooseBuilding items("Build")
     private GameObject SelectedItem;
     private GameObject BuildingDummy;
+    private GameObject BuildingTimer;
+
     private bool PlacementStarted = false;
-    bool buildingDummyBool = true;
 
+    Vector3 BuildingDummyPos;
+    GameObject BuildingTimerDestroy;
 
+    //Testing
+    public int Money = 100;
+#endregion
     void Start()
     {
         //Sets the image/sprite in UI foreach "Build(item)" for the child
@@ -31,6 +40,7 @@ public class BuildSlot : MonoBehaviour
     }
     public void PointerEnter()
     {
+        //On Mouse Hover on items in Build inventory, it will show information about the item cost and name of item
         Cost = this.gameObject.transform.GetChild(1);
         Text costTxt = Cost.GetComponentInChildren<Text>();
         costTxt.text = item.Cost.ToString() + " " + item.name;
@@ -42,11 +52,12 @@ public class BuildSlot : MonoBehaviour
     }
     public void PointerExit()
     {
+        //When mouse will move away from item, it will disable information text
         Cost = this.gameObject.transform.GetChild(1);
         Text costTxt = Cost.GetComponentInChildren<Text>();
         costTxt.enabled = false;
     }
-    public void ItemSelection(GameObject Building, GameObject BuildingDummySend)
+    public void ItemSelection(GameObject Building, GameObject BuildingTimerSend, GameObject BuildingDummySend)
     {
         //receives the GameObjects items from "Build", and starts Placement of building(Update), and instantiates the dummy
         if (item.name == "Empty" || item.IsEnaled == false)
@@ -56,13 +67,15 @@ public class BuildSlot : MonoBehaviour
         PlacementStarted = true;
         BuildingDummy = Instantiate(BuildingDummySend, new Vector3(0, 0.5f, 0), Quaternion.identity);
         SelectedItem = Building;
+        BuildingTimer = BuildingTimerSend;
+
     }
-    
+
     void Update()
     {
-
         if (PlacementStarted)
         {
+
             //Moves the BuildingDummy with the mouse
             Vector3 newPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Mathf.Abs(Camera.main.transform.position.z - transform.position.z)));
 
@@ -74,7 +87,6 @@ public class BuildSlot : MonoBehaviour
                 BuildingDummy.transform.position = Vector3.MoveTowards(new Vector3(hit.point.x, 0.5f, hit.point.z), new Vector3(newPos.x, 0.5f, newPos.z), 100 * Time.deltaTime);
 
                 }
-            buildingDummyBool = false;
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -88,13 +100,47 @@ public class BuildSlot : MonoBehaviour
                     }
 
                 }
-                //Sets SelectedItem(Building from the item "Build"), at BuildingDummy position, and destroy BuildingDummy
-                    Debug.Log(item.Building + " " + hit.point);
-                    Instantiate(SelectedItem, BuildingDummy.transform.position, Quaternion.identity);
-                    Destroy(BuildingDummy);
+                //Sets SelectedItem(Building from the item "Build"), at BuildingDummy position, and destroys BuildingDummy
 
-                PlacementStarted = false;
-                buildingDummyBool = true;
+                //Can build multiple buildings while holding leftshift, and have enough ressources to buy the building
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    if (Money < item.Cost) { }
+
+                    else
+                    {
+                        BuildingDummyPos = BuildingDummy.transform.position;
+                        BuildingTimerDestroy = Instantiate(BuildingTimer, BuildingDummyPos, Quaternion.identity);
+                        Money -= item.Cost;
+                        
+                        StartCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+
+                        StopCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+                    }
+
+                }
+                else //Builds 1 building if ressources suffice
+                {
+                    if (Money < item.Cost){ }
+
+                    else
+                    {
+                        BuildingDummyPos = BuildingDummy.transform.position;
+                        BuildingTimerDestroy = Instantiate(BuildingTimer, BuildingDummyPos, Quaternion.identity);
+                        Money -= item.Cost;
+
+                        StartCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+
+                        StopCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+                    }
+ 
+                    Destroy(BuildingDummy);
+                    PlacementStarted = false;
+
+                }
+                Debug.Log(Money);
+
+
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -102,26 +148,32 @@ public class BuildSlot : MonoBehaviour
             //Stops the buildingplacement, and destroys the temporary GameObject "BuildingDummy"
             Debug.Log("Placement ended");
             PlacementStarted = false;
-            buildingDummyBool = true;
             if (BuildingDummy != null)
             {
                 Destroy(BuildingDummy);
             }
         }
     }
+
     public void UseItem()
     {
         //When the UI buttons are clicked, it will go to ChooseBuilding(item), and execute Use
         if (name != null && item.IsEnaled)
         {
-
             item.Use();
-
         }
         else
         {
             Debug.Log("Nothing");
             return;
         }
+    }
+
+    IEnumerator BuildingTimeIEnumerator(int timer, GameObject BuildingAnimationObject, Vector3 pos)
+    {
+        Debug.Log("Animation time " + timer);
+        yield return new WaitForSeconds(timer);
+        Instantiate(SelectedItem, pos, Quaternion.identity);
+        Destroy(BuildingAnimationObject);
     }
 }

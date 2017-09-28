@@ -16,6 +16,9 @@ MonoBehaviour:
   IsEnaled: 1
   BuildingDummy: {fileID: 1058427538518172, guid: 3a2058e67ccdd064f8b164db06d469c9,
     type: 2}
+  BuildingTimer: {fileID: 1763896515023114, guid: 9c170429a88b6ba468468a50a687d988,
+    type: 2}
   Building: {fileID: 1359390132011644, guid: 882879d5b1ca7da40b8835550bd2ab54, type: 2}
+  AnimationTime: 1
   Cost: 20
   buildSlot: {fileID: 0}
