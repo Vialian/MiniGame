@@ -22,8 +22,8 @@ public class BuildSlot : MonoBehaviour
     Vector3 BuildingDummyPos;
     GameObject BuildingTimerDestroy;
 
-    //Testing
-    public int Money = 100;
+    //Testing, each inventory have 100, set money a place, where all access the same
+    int Money = 100;
 #endregion
     void Start()
     {
@@ -90,19 +90,19 @@ public class BuildSlot : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                NavMeshHit hitNavmesh;
+                //NavMeshHit hitNavmesh;
 
-                if (NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.AllAreas) /*!= NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.GetAreaFromName("Not Walkable"))*/)
-                {
-                    if (hitNavmesh.mask == 9)
-                    {
-                        Debug.Log("Navmesh");
-                    }
+                //if (NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.AllAreas) /*!= NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.GetAreaFromName("Not Walkable"))*/)
+                //{
+                //    if (hitNavmesh.mask == 9)
+                //    {
+                //        Debug.Log("Navmesh");
+                //    }
 
-                }
+                //}
                 //Sets SelectedItem(Building from the item "Build"), at BuildingDummy position, and destroys BuildingDummy
 
-                //Can build multiple buildings while holding leftshift, and have enough ressources to buy the building
+                //builds multiple buildings while holding leftshift, and have enough ressources to buy the building
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     if (Money < item.Cost) { }
@@ -173,7 +173,7 @@ public class BuildSlot : MonoBehaviour
     {
         Debug.Log("Animation time " + timer);
         yield return new WaitForSeconds(timer);
-        Instantiate(SelectedItem, pos, Quaternion.identity);
+        Instantiate(SelectedItem, pos, Quaternion.identity).name = SelectedItem.name;
         Destroy(BuildingAnimationObject);
     }
 }

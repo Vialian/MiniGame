@@ -21,4 +21,5 @@ MonoBehaviour:
   Building: {fileID: 1359390132011644, guid: 882879d5b1ca7da40b8835550bd2ab54, type: 2}
   AnimationTime: 1
   Cost: 20
+  HP: 100
   buildSlot: {fileID: 0}

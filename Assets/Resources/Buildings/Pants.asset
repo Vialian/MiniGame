@@ -18,7 +18,8 @@ MonoBehaviour:
     type: 2}
   BuildingTimer: {fileID: 1763896515023114, guid: 9c170429a88b6ba468468a50a687d988,
     type: 2}
-  Building: {fileID: 1359390132011644, guid: 882879d5b1ca7da40b8835550bd2ab54, type: 2}
+  Building: {fileID: 1000774799833810, guid: 180769b4c9b774547be629db31ae80a0, type: 2}
   AnimationTime: 5
   Cost: 10
+  HP: 20
   buildSlot: {fileID: 0}

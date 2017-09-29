@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BuildingUI : MonoBehaviour
 {
-
-
     public GameObject buildingInterface;
     void Update()
     {

@@ -13,6 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Empty
   icon: {fileID: 0}
-  IsEnaled: 1
+  IsEnaled: 0
+  BuildingDummy: {fileID: 0}
+  BuildingTimer: {fileID: 0}
   Building: {fileID: 0}
-  PlacementStarted: 1
+  AnimationTime: 0
+  Cost: 0
+  HP: 0
+  buildSlot: {fileID: 0}

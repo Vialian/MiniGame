@@ -6,19 +6,26 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Build", menuName = "Inventory/Build")] //How to create new items, you can now create in project "create => Inventory => Item"
 public class ChooseBuilding : ScriptableObject
 {
+    #region variables
     //The items created build will have variables of public
     new public string name = "New Item";
+    [Header("UI interface")]
     public Sprite icon = null;
     public bool IsEnaled = false;
+    [Header("Instantiated gameobjects")]
     public GameObject BuildingDummy;
     public GameObject BuildingTimer;
     public GameObject Building;
+    [Header("Animations")]
     public int AnimationTime;
-
+    [Header("Building Stats")]
     public int Cost;
+    public int HP;
 
     [HideInInspector]
     public BuildSlot buildSlot;
+    #endregion
+
     public virtual void Use()
     {
         //If "Build" have a name and is enabled(bool), Use item
@@ -30,6 +37,7 @@ public class ChooseBuilding : ScriptableObject
             if ("Buildings/" + name == null) Debug.Log("No Assets for this gameobject");
             else if ("Buildings/" + name != null)
             {
+
                 //sending to script BuildSlot, with 2 GameObject set on "Build", 
                 //Building for the one in game, BuildingDummy for a temporary transparent GameObject to see where Building will be instantiate
                 buildSlot.ItemSelection(Building,BuildingTimer, BuildingDummy);
