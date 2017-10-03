@@ -11,6 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e6c34dce91eb74f833346e8b0e8e52, type: 3}
   m_Name: Grunt
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Grunt
+  icon: {fileID: 0}
+  IsEnaled: 0
   unit: {fileID: 0}
+  Cost: 0
   loadingTime: 0
+  unitSlot: {fileID: 0}

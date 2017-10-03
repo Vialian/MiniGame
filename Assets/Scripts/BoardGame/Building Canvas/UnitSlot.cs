@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UnitSlot : MonoBehaviour {
 
+    #region Variables
     Transform Cost;
     //Sprite/image for building inventory
     Transform childImage;
     //reference to ChoosBuildidng
     public ChooseUnit item;
     UnitSlot unitSlot;
-    private Vector3 buildingPos;
-    int i = 2;
+    UnitUI unitUI;
+    #endregion
     void Start()
     {
 
@@ -47,16 +48,15 @@ public class UnitSlot : MonoBehaviour {
     public void unitSelection(int loadingTime, GameObject unit)
     {
 
-        buildingPos = unitSlot.buildingPos;
-        Debug.Log("denne pos er: " + buildingPos);
-        StartCoroutine(UnitTimeIEnumerator(loadingTime, unit, buildingPos));
+        Debug.Log("denne pos er på: " );
+        StartCoroutine(UnitTimeIEnumerator(loadingTime, unit, new Vector3(0,0,0)));
     }
-    public void BuildingPos(Vector3 buildingPosSend)
-    {
-        buildingPos = buildingPosSend;
-        Debug.Log("test pos er : " + buildingPos);
-    }
-
+    //public void BuildingPos(GameObject buildingPosSend)
+    //{
+    //    buildingPos = buildingPosSend;
+    //    Debug.Log("test pos er : " + buildingPos.name);
+    //}
+    
     public void UseItem()
     {
         //When the UI buttons are clicked, it will go to ChooseBuilding(item), and execute Use
@@ -72,17 +72,12 @@ public class UnitSlot : MonoBehaviour {
     }
     void Update()
     {
-        Debug.Log("I update " +buildingPos);
-        
-        Debug.Log(i);
+
     }
 
     IEnumerator UnitTimeIEnumerator(int timer, GameObject unit, Vector3 spawnPos)
     {
         yield return new WaitForSeconds(timer);
         Instantiate(unit, spawnPos, Quaternion.identity).name = unit.name;
-
-
     }
-
 }

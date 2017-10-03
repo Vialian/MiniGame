@@ -16,6 +16,7 @@ TagManager:
   - Weapon 2
   - floor
   - Obstacles
+  - Building
   layers:
   - Default
   - TransparentFX

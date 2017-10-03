@@ -11,6 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e6c34dce91eb74f833346e8b0e8e52, type: 3}
   m_Name: Footmen
   m_EditorClassIdentifier: 
-  name: New Item
-  unit: {fileID: 0}
-  loadingTime: 0
+  name: Footmen
+  icon: {fileID: 21300000, guid: 5b1a64ea234fb2343b8d0686c51280de, type: 3}
+  IsEnaled: 1
+  unit: {fileID: 1123276883294712, guid: 2b64d6ba9a195984191fdd1e663f151d, type: 2}
+  Cost: 20
+  loadingTime: 2
+  unitSlot: {fileID: 0}

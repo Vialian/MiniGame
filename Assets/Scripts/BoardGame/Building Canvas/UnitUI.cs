@@ -9,19 +9,21 @@ public class UnitUI : MonoBehaviour {
     BuildSlot buildSlot;
     public GameObject[] slot;
     bool isClicked;
-
+    bool targetbool;
+    public GameObject targetBuilding;
     public Vector3 buildingPos;
     UnitSlot unitSlot;
-
-    public int i = 5;
-
+    int i = 5;
+    ChooseBuilding chooseBuilding;
     void Start()
     {
+        
+        unitSlot = GetComponent<UnitSlot>();
         UnitInterface.SetActive(false);
     }
 
     void Update () {
-        unitSlot = new UnitSlot();
+
         if(EventSystem.current.IsPointerOverGameObject())
             return;
 
@@ -36,13 +38,15 @@ public class UnitUI : MonoBehaviour {
                 {
                     if (hit.transform.name == item.GetComponent<BuildSlot>().item.Building.name)
                     {
+                        targetBuilding = hit.transform.gameObject;
                         //UnitInterface.SetActive(!UnitInterface.activeSelf);
                         buildingPos = hit.transform.position;
                         UnitInterface.SetActive(true);
                         isClicked = true;
                         Debug.Log("Firsdt " +buildingPos);
                         //unitSlot.buildingPos = buildingPos;
-                        //unitSlot.BuildingPos(buildingPos);
+                        //unitSlot.BuildingPos(targetBuilding);
+                        //chooseBuilding.build(buildingPos);
                     }
                     else
                     {

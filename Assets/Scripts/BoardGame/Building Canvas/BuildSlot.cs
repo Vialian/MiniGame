@@ -24,9 +24,13 @@ public class BuildSlot : MonoBehaviour
 
     //Testing, each inventory have 100, set money a place, where all access the same
     int Money = 100;
-#endregion
+
+
+    PlacementCollider placementCollider;
+    #endregion
     void Start()
     {
+
         //Sets the image/sprite in UI foreach "Build(item)" for the child
         item.buildSlot = this;
         childImage = this.gameObject.transform.GetChild(0);
@@ -90,6 +94,7 @@ public class BuildSlot : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+
                 //NavMeshHit hitNavmesh;
 
                 //if (NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.AllAreas) /*!= NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.GetAreaFromName("Not Walkable"))*/)
@@ -109,6 +114,7 @@ public class BuildSlot : MonoBehaviour
 
                     else
                     {
+
                         BuildingDummyPos = BuildingDummy.transform.position;
                         BuildingTimerDestroy = Instantiate(BuildingTimer, BuildingDummyPos, Quaternion.identity);
                         Money -= item.Cost;

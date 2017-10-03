@@ -13,7 +13,7 @@ public class ChooseUnit : ScriptableObject {
 
     [HideInInspector]
     public UnitSlot unitSlot;
-    // Use this for initialization
+
     public virtual void Use()
     {
         //If "Build" have a name and is enabled(bool), Use item
@@ -37,6 +37,10 @@ public class ChooseUnit : ScriptableObject {
         {
             Debug.Log("Nothing");
         }
+
+    }
+    public void UnitSend(Vector3 pos)
+    {
 
     }
 }
