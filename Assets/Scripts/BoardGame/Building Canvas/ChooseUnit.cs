@@ -39,8 +39,4 @@ public class ChooseUnit : ScriptableObject {
         }
 
     }
-    public void UnitSend(Vector3 pos)
-    {
-
-    }
 }

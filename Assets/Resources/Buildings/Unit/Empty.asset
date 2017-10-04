@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58e6c34dce91eb74f833346e8b0e8e52, type: 3}
-  m_Name: Grunt
+  m_Name: Empty
   m_EditorClassIdentifier: 
-  name: Grunt
-  icon: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
-  IsEnaled: 1
-  unit: {fileID: 1070325685330150, guid: 51d88dae21622b8438c71f16ba37bcec, type: 2}
-  Cost: 20
-  loadingTime: 3
+  name: Empty
+  icon: {fileID: 0}
+  IsEnaled: 0
+  unit: {fileID: 0}
+  Cost: 0
+  loadingTime: 0
   unitSlot: {fileID: 0}
