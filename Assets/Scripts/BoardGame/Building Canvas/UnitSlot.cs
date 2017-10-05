@@ -16,9 +16,25 @@ public class UnitSlot : MonoBehaviour {
     //Reference
     UnitSlot unitSlot;
 
+    ItemManager itemManager;
+    #endregion
+    #region Singleton only one instance of class/object
+    public static UnitSlot instance; //Singleton, makes a static variable that share all instances of a class
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of Inventory found!");
+            return;
+        }
+        instance = this; //then we set the instance to this particular component, so allways access this component, but you can only use 1 instance
+
+    }
     #endregion
     void Start()
     {
+
         item.unitSlot = this;
         childImage = this.gameObject.transform.GetChild(0);
         Image pic = childImage.GetComponentInChildren<Image>();
@@ -28,27 +44,32 @@ public class UnitSlot : MonoBehaviour {
         {
             pic.enabled = false;
         }
+        Debug.Log(itemManager.Items);
+        //foreach (var item in itemManager.Items)
+        //{
+        //    Debug.Log(item.name);
+        //}
     }
-    public delegate void OnUnitChanged();
+    //public delegate void OnUnitChanged();
 
-    public OnUnitChanged onUnitChangedCallback;
-    public List<ChooseUnit> unitList = new List<ChooseUnit>();
-    //public void UIPics(string name)
-    //{    
+    //public OnUnitChanged onUnitChangedCallback;
+    //public List<ChooseUnit> unitList = new List<ChooseUnit>();
+    //public void UIPics(/*string name*/)
+    //{
     //    //change inventory item when different buildings are clicked
-    //    if (name == "Chest")
-    //    {
-    //        onUnitChangedCallback.Invoke();
-    //        unitUI.slotUnitArray[0].transform.GetComponent<UnitSlot>();
-    //        for (int i = 0; i < unitUI.slotUnitArray.Length; i++)
-    //        {
+    //    //if (name == "Chest")
+    //    //{
+    //    //    onUnitChangedCallback.Invoke();
+    //    //    unitUI.slotUnitArray[0].transform.GetComponent<UnitSlot>();
+    //    //    for (int i = 0; i < unitUI.slotUnitArray.Length; i++)
+    //    //    {
 
-    //        }
-    //    }
-    //    else if (name == "Pants")
-    //    {
+    //    //    }
+    //    //}
+    //    //else if (name == "Pants")
+    //    //{
 
-    //    }
+    //    //}
     //    item.unitSlot = this;
     //    childImage = this.gameObject.transform.GetChild(0);
     //    Image pic = childImage.GetComponentInChildren<Image>();
@@ -59,6 +80,35 @@ public class UnitSlot : MonoBehaviour {
     //        pic.enabled = false;
     //    }
     //}
+
+    //public bool Add(ChooseUnit itemAdd)
+    //{
+
+    //    unitList.Add(itemAdd);
+
+    //    if (onUnitChangedCallback != null)
+    //        onUnitChangedCallback.Invoke();
+    //    return true;
+    //}
+    //public void ClearSlot()
+    //{
+    //    item = null;
+
+    //    item.unitSlot = this;
+    //    childImage = this.gameObject.transform.GetChild(0);
+    //    Image pic = childImage.GetComponentInChildren<Image>();
+    //    pic.enabled = false;
+    //}
+    //public void Remove(ChooseUnit itemRemove)
+    //{
+    //    unitList.Remove(itemRemove);
+
+    //    if (onUnitChangedCallback != null)
+    //        onUnitChangedCallback.Invoke();
+    //}
+
+    //Testing
+    //______________________________________________________________________________________________
     public void PointerEnter()
     {
         //On Mouse Hover on items in Build inventory, it will show information about the item cost and name of item

@@ -5,9 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Build", menuName = "Inventory/Unit")] //How to create new items, you can now create in project "create => Inventory => Unit"
 public class ChooseUnit : ScriptableObject {
     new public string name = "New Item";
+    [Header("UI interface")]
     public Sprite icon = null;
     public bool IsEnaled;
+    [Header("Instantiated gameobjects")]
     public GameObject unit;
+    [Header("Stats")]
     public int Cost;
     public int loadingTime;
 
