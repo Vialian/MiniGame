@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UnitUI : MonoBehaviour {
     #region variables
@@ -12,39 +13,20 @@ public class UnitUI : MonoBehaviour {
     UnitSlot unitSlot;
     bool isClicked;
     Vector3 buildingPos;
-
+    Text HeadlineText;
     [Header("Static")]
     public GameObject UnitInterface;
+    public GameObject HeadLines;
     public GameObject[] slotUnitArray;
     public GameObject[] slot;
-
-    //test used with delegate,
-    public Transform itemsParent;   // The parent object of all the items
     UnitSlot[] slots;  // List of all the slots
-    #endregion
 
+    #endregion
     void Start()
     {
         UnitInterface.SetActive(false);
-
-        //slots = itemsParent.GetComponentsInChildren<UnitSlot>();
-        //unitSlot.onUnitChangedCallback += unitSlot.UIPics;
-
+        HeadlineText = HeadLines.GetComponent<Text>();
     }
-    //void UpdateUI()
-    //{
-    //    for (int i = 0; i < slots.Length; i++)
-    //    {
-    //        if (i < unitSlot.unitList.Count)
-    //        {
-    //            slots[i].Add(unitSlot.unitList[i]);
-    //        }
-    //        else
-    //        {
-    //            slots[i].ClearSlot();
-    //        }
-    //    }
-    //}
     void Update () {
         //If mouse if over gameobject, nothing will happen, made so when inventory is up, the mouse will interact with stuff behind 
         if(EventSystem.current.IsPointerOverGameObject())
@@ -69,15 +51,9 @@ public class UnitUI : MonoBehaviour {
                         //Check for every slot in unit inventory and send position to BuildingPos, so every slot will send a position 
                         for (int i = 0; i < slotUnitArray.Length; i++)
                         {
-                            //items.Add(item);
 
-                            //if (onItemChangedCallback != null)
-                            //    onItemChangedCallback.Invoke();
-                            //__________________________________________________________________
-                            //change inventory item when different buildings are clicked
-                            //slotUnitArray[i].SendMessage("UIPics", hit.transform.name, SendMessageOptions.RequireReceiver);
-                            //__________________________________________________________________
-
+                            slotUnitArray[i].SendMessage("UIPics", hit.transform.name, SendMessageOptions.RequireReceiver);
+                            HeadlineText.text = hit.transform.name;
                             slotUnitArray[i].SendMessage("BuildingPos", buildingPos, SendMessageOptions.RequireReceiver);
                         }
                     }

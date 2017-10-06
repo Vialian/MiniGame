@@ -15,100 +15,77 @@ public class UnitSlot : MonoBehaviour {
     Transform childImage;
     //Reference
     UnitSlot unitSlot;
-
-    ItemManager itemManager;
     #endregion
-    #region Singleton only one instance of class/object
-    public static UnitSlot instance; //Singleton, makes a static variable that share all instances of a class
-
-    void Awake()
+    public void UIPics(string name)
     {
-        if (instance != null)
+        ItemManager itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        if (name == "Chest")
         {
-            Debug.LogWarning("More than one instance of Inventory found!");
-            return;
+            if (this.name == "InventorySlot")
+                item = itemManager.Items[1];
+            if (this.name == "InventorySlot (1)")
+                item = itemManager.Items[1];
+            if (this.name == "InventorySlot (2)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (3)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (4)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (5)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (6)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (7)")
+                item = itemManager.Items[0];
         }
-        instance = this; //then we set the instance to this particular component, so allways access this component, but you can only use 1 instance
-
-    }
-    #endregion
-    void Start()
-    {
-
+        else if (name == "Pants")
+        {
+            if (this.name == "InventorySlot")
+                item = itemManager.Items[2];
+            if (this.name == "InventorySlot (1)")
+                item = itemManager.Items[2];
+            if (this.name == "InventorySlot (2)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (3)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (4)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (5)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (6)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (7)")
+                item = itemManager.Items[0];
+        }
+        else if (name == "Helmet")
+        {
+            if (this.name == "InventorySlot")
+                item = itemManager.Items[1];
+            if (this.name == "InventorySlot (1)")
+                item = itemManager.Items[2];
+            if (this.name == "InventorySlot (2)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (3)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (4)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (5)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (6)")
+                item = itemManager.Items[0];
+            if (this.name == "InventorySlot (7)")
+                item = itemManager.Items[0];
+        }
         item.unitSlot = this;
         childImage = this.gameObject.transform.GetChild(0);
         Image pic = childImage.GetComponentInChildren<Image>();
         pic.sprite = item.icon;
         //If "Build" don't have a image, it will show nothing
-        if (item.name == "Empty")
+        if (item.name == "Empty" || item.IsEnaled == false)
         {
             pic.enabled = false;
         }
-        Debug.Log(itemManager.Items);
-        //foreach (var item in itemManager.Items)
-        //{
-        //    Debug.Log(item.name);
-        //}
     }
-    //public delegate void OnUnitChanged();
-
-    //public OnUnitChanged onUnitChangedCallback;
-    //public List<ChooseUnit> unitList = new List<ChooseUnit>();
-    //public void UIPics(/*string name*/)
-    //{
-    //    //change inventory item when different buildings are clicked
-    //    //if (name == "Chest")
-    //    //{
-    //    //    onUnitChangedCallback.Invoke();
-    //    //    unitUI.slotUnitArray[0].transform.GetComponent<UnitSlot>();
-    //    //    for (int i = 0; i < unitUI.slotUnitArray.Length; i++)
-    //    //    {
-
-    //    //    }
-    //    //}
-    //    //else if (name == "Pants")
-    //    //{
-
-    //    //}
-    //    item.unitSlot = this;
-    //    childImage = this.gameObject.transform.GetChild(0);
-    //    Image pic = childImage.GetComponentInChildren<Image>();
-    //    pic.sprite = item.icon;
-    //    //If "Build" don't have a image, it will show nothing
-    //    if (item.name == "Empty" || item.IsEnaled == false)
-    //    {
-    //        pic.enabled = false;
-    //    }
-    //}
-
-    //public bool Add(ChooseUnit itemAdd)
-    //{
-
-    //    unitList.Add(itemAdd);
-
-    //    if (onUnitChangedCallback != null)
-    //        onUnitChangedCallback.Invoke();
-    //    return true;
-    //}
-    //public void ClearSlot()
-    //{
-    //    item = null;
-
-    //    item.unitSlot = this;
-    //    childImage = this.gameObject.transform.GetChild(0);
-    //    Image pic = childImage.GetComponentInChildren<Image>();
-    //    pic.enabled = false;
-    //}
-    //public void Remove(ChooseUnit itemRemove)
-    //{
-    //    unitList.Remove(itemRemove);
-
-    //    if (onUnitChangedCallback != null)
-    //        onUnitChangedCallback.Invoke();
-    //}
-
-    //Testing
-    //______________________________________________________________________________________________
     public void PointerEnter()
     {
         //On Mouse Hover on items in Build inventory, it will show information about the item cost and name of item
@@ -119,7 +96,6 @@ public class UnitSlot : MonoBehaviour {
             costTxt.enabled = false;
         else
             costTxt.enabled = true;
-
     }
     public void PointerExit()
     {

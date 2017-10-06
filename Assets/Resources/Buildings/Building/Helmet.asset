@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77bdd11a3fa9a734abc7503526da48d2, type: 3}
-  m_Name: Test
+  m_Name: Helmet
   m_EditorClassIdentifier: 
-  name: Test
+  name: Helmet
   icon: {fileID: 21300000, guid: 7fe66e443be5f56429931912cb5cabdf, type: 3}
   IsEnaled: 1
   BuildingDummy: {fileID: 1058427538518172, guid: 3a2058e67ccdd064f8b164db06d469c9,
