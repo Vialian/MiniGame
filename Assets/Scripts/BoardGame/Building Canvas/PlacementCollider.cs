@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlacementCollider : MonoBehaviour {
     public bool colliding;
-    public void OnTriggerEnter(Collider c)
+
+    public void OnCollisionEnter(Collision c)
     {
-        if (c.tag == "Building")
+        if (c.transform.tag == "Building")
         {
             Debug.Log("Collide");
             colliding = true;
         }
     }
     
-    public void OnTriggerExit(Collider c)
+    public void OnCollisionExit(Collision c)
     {
-        if (c.tag == "Building")
+        if (c.transform.tag == "Building")
         {
             colliding = false;
         }

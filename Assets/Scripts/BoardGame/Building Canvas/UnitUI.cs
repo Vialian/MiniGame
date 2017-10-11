@@ -51,7 +51,6 @@ public class UnitUI : MonoBehaviour {
                         //Check for every slot in unit inventory and send position to BuildingPos, so every slot will send a position 
                         for (int i = 0; i < slotUnitArray.Length; i++)
                         {
-
                             slotUnitArray[i].SendMessage("UIPics", hit.transform.name, SendMessageOptions.RequireReceiver);
                             HeadlineText.text = hit.transform.name;
                             slotUnitArray[i].SendMessage("BuildingPos", buildingPos, SendMessageOptions.RequireReceiver);

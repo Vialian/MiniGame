@@ -10,6 +10,6 @@ public class BuildingUI : MonoBehaviour
         if (Input.GetButtonDown("Inventory")) //When "i" is clicked, shows UI building
         {
             buildingInterface.SetActive(!buildingInterface.activeSelf);
-        }  
+        }
     }
 }

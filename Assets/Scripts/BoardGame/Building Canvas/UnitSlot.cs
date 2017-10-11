@@ -8,8 +8,7 @@ public class UnitSlot : MonoBehaviour {
     Vector3 SpawnLengthFromBuilding = new Vector3(0, 0, 2);
     Vector3 buildingPos;
     UnitUI unitUI;
-    [Header("Static")]
-    public ChooseUnit item;
+    ChooseUnit item;
     Transform Cost;
     //Sprite/image for building inventory
     Transform childImage;
@@ -118,9 +117,10 @@ public class UnitSlot : MonoBehaviour {
         if (name != null && item.IsEnaled)
         {
             item.Use();
+
         }
         else
-        {
+        {  
             Debug.Log("Nothing");
             return;
         }

@@ -28,12 +28,9 @@ public class ChooseUnit : ScriptableObject {
             if ("Buildings/" + name == null) Debug.Log("No Assets for this gameobject");
             else if ("Buildings/" + name != null)
             {
-
                 //sending to script BuildSlot, with 2 GameObject set on "Build", 
                 //Building for the one in game, BuildingDummy for a temporary transparent GameObject to see where Building will be instantiate
                 unitSlot.unitSelection(loadingTime,unit);
-
-
             }
         }
         else

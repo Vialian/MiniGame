@@ -97,6 +97,7 @@ public class BuildSlot : MonoBehaviour
 
                 //NavMeshHit hitNavmesh;
 
+
                 //if (NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.AllAreas) /*!= NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.GetAreaFromName("Not Walkable"))*/)
                 //{
                 //    if (hitNavmesh.mask == 9)
