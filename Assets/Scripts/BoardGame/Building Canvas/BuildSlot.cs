@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 public class BuildSlot : MonoBehaviour
 {
 #region Variables
@@ -22,11 +23,10 @@ public class BuildSlot : MonoBehaviour
     Vector3 BuildingDummyPos;
     GameObject BuildingTimerDestroy;
 
+    PlacementCollider placementCollider;
     //Testing, each inventory have 100, set money a place, where all access the same
     int Money = 100;
 
-
-    PlacementCollider placementCollider;
     #endregion
     void Start()
     {
@@ -74,9 +74,11 @@ public class BuildSlot : MonoBehaviour
         BuildingTimer = BuildingTimerSend;
 
     }
-
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (PlacementStarted)
         {
 
@@ -92,62 +94,57 @@ public class BuildSlot : MonoBehaviour
 
                 }
 
-            if (Input.GetMouseButtonDown(0))
+            PlacementCollider placementColliderBuilding = BuildingDummy.GetComponent<PlacementCollider>();
+
+
+            if (!placementColliderBuilding.colliding)
             {
-
-                //NavMeshHit hitNavmesh;
-
-
-                //if (NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.AllAreas) /*!= NavMesh.SamplePosition(BuildingDummy.transform.position, out hitNavmesh, 20f, NavMesh.GetAreaFromName("Not Walkable"))*/)
-                //{
-                //    if (hitNavmesh.mask == 9)
-                //    {
-                //        Debug.Log("Navmesh");
-                //    }
-
-                //}
-                //Sets SelectedItem(Building from the item "Build"), at BuildingDummy position, and destroys BuildingDummy
-
-                //builds multiple buildings while holding leftshift, and have enough ressources to buy the building
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (Money < item.Cost) { }
 
-                    else
+                        //Sets SelectedItem(Building from the item "Build"), at BuildingDummy position, and destroys BuildingDummy
+
+                        //builds multiple buildings while holding leftshift, and have enough ressources to buy the building
+                        if (Input.GetKey(KeyCode.LeftShift))
                     {
+                        if (Money < item.Cost) { }
 
-                        BuildingDummyPos = BuildingDummy.transform.position;
-                        BuildingTimerDestroy = Instantiate(BuildingTimer, BuildingDummyPos, Quaternion.identity);
-                        Money -= item.Cost;
+                        else
+                        {
+                                BuildingDummyPos = BuildingDummy.transform.position;
+                            BuildingTimerDestroy = Instantiate(BuildingTimer, BuildingDummyPos, Quaternion.identity);
+                            Money -= item.Cost;
                         
-                        StartCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+                            StartCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
 
-                        StopCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+                            StopCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+
+                        }
+
                     }
-
-                }
-                else //Builds 1 building if ressources suffice
-                {
-                    if (Money < item.Cost){ }
-
-                    else
+                    else //Builds 1 building if ressources suffice
                     {
-                        BuildingDummyPos = BuildingDummy.transform.position;
-                        BuildingTimerDestroy = Instantiate(BuildingTimer, BuildingDummyPos, Quaternion.identity);
-                        Money -= item.Cost;
+                        if (Money < item.Cost){ }
 
-                        StartCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+                        else
+                        {
+                            BuildingDummyPos = BuildingDummy.transform.position;
+                            BuildingTimerDestroy = Instantiate(BuildingTimer, BuildingDummyPos, Quaternion.identity);
+                            Money -= item.Cost;
 
-                        StopCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
-                    }
+                            StartCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+
+                            StopCoroutine(BuildingTimeIEnumerator(item.AnimationTime, BuildingTimerDestroy, BuildingDummyPos));
+                        }
  
-                    Destroy(BuildingDummy);
-                    PlacementStarted = false;
+                        Destroy(BuildingDummy);
+                        PlacementStarted = false;
+
+                    }
+                    Debug.Log(Money);
+
 
                 }
-                Debug.Log(Money);
-
-
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -178,6 +175,7 @@ public class BuildSlot : MonoBehaviour
 
     IEnumerator BuildingTimeIEnumerator(int timer, GameObject BuildingAnimationObject, Vector3 pos)
     {
+
         Debug.Log("Animation time " + timer);
         yield return new WaitForSeconds(timer);
         Instantiate(SelectedItem, pos, Quaternion.identity).name = SelectedItem.name;

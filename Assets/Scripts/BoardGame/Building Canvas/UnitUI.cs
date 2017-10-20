@@ -8,8 +8,6 @@ public class UnitUI : MonoBehaviour {
     #region variables
 
     BuildSlot buildSlot;
-    ChooseBuilding chooseBuilding;
-    ChooseUnit chooseUnit;
     UnitSlot unitSlot;
     bool isClicked;
     Vector3 buildingPos;
@@ -45,7 +43,6 @@ public class UnitUI : MonoBehaviour {
                     if (hit.transform.name == item.GetComponent<BuildSlot>().item.Building.name)
                     {//get building position, and show Unit Interface
                         buildingPos = hit.transform.position;
-                        //UnitSlot.instance.Add(chooseUnit);
                         UnitInterface.SetActive(true);
                         isClicked = true;
                         //Check for every slot in unit inventory and send position to BuildingPos, so every slot will send a position 
